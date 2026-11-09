@@ -1,0 +1,2 @@
+Créateur de To-do-list
+Faire une photo (ou ajout manuel) de son Journal De Classe et le programme ajoute automatiquement la tache en question dans une journée du planning avec une catégorie de couleur pour les différentes taches (devoirs, tests, lectures, ...). Avec le nombre de jours restant avant la tache. Le tout dans un agenda virtuelle.
