@@ -1,3 +1,5 @@
+import json
+
 print("Hello, you're here to create your planning")
 # 1. Sommeil
 bed_time=input("At wich time do you want to sleep? (Example 22:00) ")
@@ -46,4 +48,6 @@ planning_data = {
 with open("planning.json", "w", encoding="utf-8") as json_file:
     json.dump(planning_data, json_file, indent=4, ensure_ascii=False)
 
-print("\nYour planning has been succesfully saved !")
+def run():
+    print("Planning generator started...")
+    input("Planning complete! Press Enter to return to the main menu... ")
