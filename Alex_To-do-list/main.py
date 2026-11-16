@@ -1,5 +1,12 @@
-n_task = input ("1.Give me the name of the task.  ")
-d_task = input ("2.Give me the date of the task.  ")
-s_task = input ("3.Give me the subclass of the task.  ") # (test, homework, groupswork, reading, presentation, ...)
-task = s_task + "_" + n_task + "_" + d_task
-print(task)
+import json
+
+p_date = input ("1.Give me the date of the task.  ")
+p_subclass = input ("2.Give me the subclass of the task.  ") # (test, homework, groupswork, reading, presentation, ...)
+p_name = input ("3.Give me the name of the task.  ")
+p_task = p_date + "_" + p_subclass + "_" + p_name
+
+task_JSON = {"date": p_date, "subclass": p_subclass, "name": p_name}
+print(type(task_JSON))
+p_task = json.dumps(task_JSON)
+print(type(p_task))
+print(type(task_JSON))
