@@ -1,6 +1,8 @@
 import json
 import os
 
+PLANNING_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "planning.json")
+
 def run():
     print("\n--- VIEW PLANNING ---")
     # Regarder si planning exists
@@ -10,26 +12,25 @@ def run():
         return
     # Ouvrir le fichier planning.json
     try:
-        with open("planning.json", "r", encoding="utf-8") as json_file:
+        with open(PLANNING_FILE, "r", encoding="utf-8") as json_file:
             planning_data = json.load(json_file)
-        except json.JSONDecodeError:
-            print("Error reading the planning file.")
-            input("Press Enter to return to the main menu... ")
-            return
-        # Montrer Sleep Schedule
-        sleep = planning_data.get("sleep", {})
-        print("\n🛌 Sleep Schedule:")
-        print(f"  • Bed time:    {sleep.get('bed_time', 'N/A')}")
-        print(f"  • Wakeup time: {sleep.get('wakeup_time', 'N/A')}")
-        # Montrer Activités
-        activities = planning_data.get("activities", [])
-        print(f"\n Scheduled Activities ({len(activities)} total):")
+    except json.JSONDecodeError:
+        print("Error reading the planning file.")
+        input("Press Enter to return to the main menu... ")
+        return
+    # Montrer Sleep Schedule
+    sleep = planning_data.get("sleep", {})
+    print("\n🛌 Sleep Schedule:")
+    print(f"  • Bed time:    {sleep.get('bed_time', 'N/A')}")
+    print(f"  • Wakeup time: {sleep.get('wakeup_time', 'N/A')}")
+    # Montrer Activités
+    activities = planning_data.get("activities", [])
+    print(f"\n Scheduled Activities ({len(activities)} total):")
         
-        if not activities:
-            print("No activities recorded yet.")
-        else:
-            for index, act in enumerate(activities, 1):
-                print(f"  {index}. **{act.get('name')}** ({act.get('day')})")
-                print(f"	 Time: {act.get('start time')} - {act.get('end time')} | Importance: {act.get('importance')}/5")
+    if not activities:
+        print("No activities recorded yet.")
+    else:
+        for index, act in enumerate(activities, 1):
+            print(f"	 Time: {act.get('start time')} - {act.get('end time')} | Importance: {act.get('importance')}/5")
                 
-        input("\nPress Enter to return to the main menu... ")
+    input("\nPress Enter to return to the main menu... ")

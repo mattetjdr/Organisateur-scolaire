@@ -1,3 +1,7 @@
+import create_planning
+import view_planning
+import edit_planning
+
 def main_menu():
     while True:
         print("\n" + "=" * 35)
@@ -12,13 +16,10 @@ def main_menu():
         choice = input("Choose an option (1-4): ")
 
         if choice == "1":
-            import create_planning
             create_planning.run()
         elif choice == "2":
-            import view_planning
             view_planning.run()
         elif choice == "3":
-            import edit_planning
             edit_planning.run()
         elif choice == "4":
             print("Goodbye!")
