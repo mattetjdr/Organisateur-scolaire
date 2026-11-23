@@ -1,25 +1,46 @@
+import os
 import runpy
+import sys
+from pathlib import Path
 
-while True:
-    print("\n==============================")
-    print("        MENU PRINCIPAL        ")
-    print("==============================")
-    print("1 - Lancer le programme de Alex")
-    print("2 - Lancer le programme de Gerald")
-    print("3 - Lancer le programme de Matthieu")
-    print("0 - Quitter")
-    print("==============================")
-    
-    choix = input("Votre choix : ")
-    
-    if choix == "1":
-        runpy.run_path("Alex_To-do-list/main1.py")
-    elif choix == "2":
-        runpy.run_path("Gerald_Sous-taches/main2.py")
-    elif choix == "3":
-        runpy.run_path("Matthieu_Créateur de planning/main3.py")
-    elif choix == "0":
-        print("Au revoir !")
-        break
-    else:
-        print("Choix invalide")
+
+ROOT = Path(__file__).resolve().parent
+PROGRAMS = {
+    "1": ("Alex_To-do-list", "main1.py", "Alex", "__main__"),
+    "2": ("Gerald_Sous-taches", "main2.py", "Gerald", "__main__"),
+    "3": ("Matthieu_Créateur de planning", "main3.py", "Matthieu", "__main3__"),
+}
+
+
+def launch_project(folder, filename, run_name):
+    project_dir = ROOT / folder
+    script_path = project_dir / filename
+    previous_dir = Path.cwd()
+    sys.path.insert(0, str(project_dir))
+    try:
+        os.chdir(project_dir)
+        runpy.run_path(str(script_path), run_name=run_name)
+    finally:
+        os.chdir(previous_dir)
+        sys.path.remove(str(project_dir))
+
+
+def main():
+    while True:
+        print("\n=== Organisateur scolaire ===")
+        for choice, (_, _, name, _) in PROGRAMS.items():
+            print(f"{choice}. Lancer le programme de {name}")
+        print("0. Quitter")
+
+        choice = input("Votre choix : ").strip()
+        if choice == "0":
+            break
+        if choice in PROGRAMS:
+            folder, filename, _, run_name = PROGRAMS[choice]
+            launch_project(folder, filename, run_name)
+        else:
+            print("Choix invalide.")
+
+
+if __name__ == "__main__":
+    main()
