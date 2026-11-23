@@ -1,5 +1,16 @@
+import json
+import os
+FILE_NAME= "subjects.json"
+def load_subjects() -> list[dict]:
+    if os.path.exists(FILE_NAME):
+        with open(FILE_NAME,"r", encoding="utf-8") as f:
+            return json.load(f)
+    return[]
+def save_subjects():
+    with open(FILE_NAME,"w", encoding="utf-8") as f:
+        json.dump(subjects,f, indent=4, ensure_ascii=False)
 # An empty list to store all subjects
-subjects: list[dict] = []
+subjects: list[dict] = load_subjects()
 
 def generate_subtasks(difficulty: str) -> list[dict]:
     if difficulty == "Easy":
@@ -62,6 +73,7 @@ def add_subject():
     }
 
     subjects.append(subject)
+    save_subjects()
     print("Subject, chapter and task plan added successfully!")
 
 # Show all subjects (simple view)
@@ -105,6 +117,7 @@ def delete_subject():
         return
 
     removed = subjects.pop(number - 1)
+    save_subjects()
     print(f"{removed['name']} deleted")
 
 def modify_subject():
@@ -128,6 +141,7 @@ def modify_subject():
         subjects[number_to_modify - 1]["name"] = new_name
     if new_chapter:
         subjects[number_to_modify - 1]["chapter"] = new_chapter
+    save_subjects()
         
     print("Subject has been modified")
 
@@ -158,8 +172,13 @@ def main():
         elif choice == 5:
             delete_subject()
         elif choice == 6:
-            print("Ok! bye!")
-            break
+            print("Are you sure?")
+            answer=input("Yes or no? ").strip().lower()
+            if answer == "yes":
+                print("OK Bye!")
+                break
+            else:
+                continue
         else:
             print("Invalid choice")
 
