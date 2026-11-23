@@ -2,6 +2,7 @@ import create_planning
 import view_planning
 import edit_planning
 
+
 def main_menu():
     while True:
         print("\n" + "=" * 35)
