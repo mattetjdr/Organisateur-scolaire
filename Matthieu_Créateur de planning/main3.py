@@ -3,7 +3,7 @@ import view_planning
 import edit_planning
 
 
-def main_menu():
+def main_menu3():
     while True:
         print("\n" + "=" * 35)
         print("        PLANNING MAIN MENU")
@@ -28,5 +28,5 @@ def main_menu():
         else:
             print("Invalid choice, please enter a number from 1 to 4.")
 
-if __name__ == "__main__":
-    main_menu()
+if __name__ == "__main3__":
+    main_menu3()

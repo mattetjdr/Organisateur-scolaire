@@ -23,6 +23,7 @@ def run():
         while True:
             importance = input("What's the importance from 1 to 5 : ")
             if not importance.isnumeric():
+                print("Error, please enter a number between 1 and 5")
                 continue
             elif int(importance) < 1 or int(importance) > 5:
                 print("Error, please enter a number between 1 and 5")
