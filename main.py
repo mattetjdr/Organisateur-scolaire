@@ -1,6 +1,4 @@
-import main1.py
-import main2.py
-import main3.py
+import runpy
 
 while True:
     print("\n==============================")
@@ -12,3 +10,16 @@ while True:
     print("0 - Quitter")
     print("==============================")
     
+    choix = input("Votre choix : ")
+    
+    if choix == "1":
+        runpy.run_path("Alex_To-do-list/main1.py")
+    elif choix == "2":
+        runpy.run_path("Gerald_Sous-taches/main2.py")
+    elif choix == "3":
+        runpy.run_path("Matthieu_Créateur de planning/main3.py")
+    elif choix == "0":
+        print("Au revoir !")
+        break
+    else:
+        print("Choix invalide")

@@ -1,0 +1,21 @@
+[
+    {
+        "name": "Mama",
+        "chapter": "Ouuu",
+        "difficulty": "Hard",
+        "task": [
+            {
+                "task": "Analyze core theories or arguments",
+                "duration": "20 min"
+            },
+            {
+                "task": "Write a structured personal summary",
+                "duration": "20 min"
+            },
+            {
+                "task": "Test knowledge with active recall",
+                "duration": "20 min"
+            }
+        ]
+    }
+]
